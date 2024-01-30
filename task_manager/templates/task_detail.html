@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <h2>{{ task.title|capfirst }} Details</h2>
+  <table id="table" class="table table-striped-columns">
+    <tr>
+      <th>Title</th>
+      <td>{{ task.title }}</td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td>{{ task.description }}</td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <td>{% if task.completed %}<h5><span class="badge bg-success">Done</span></h5>{% else %}<h5><span class="badge bg-primary">In progress</span></h5>{% endif %}</td>
+    </tr>
+    <tr>
+        <th>Creation Date</th>
+        <td>{{task.created_date}}</td>
+      </tr>
+    <tr>
+  </table>
+{% endblock %}
