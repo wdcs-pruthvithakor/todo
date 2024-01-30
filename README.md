@@ -1,22 +1,30 @@
-# Library Management System
+# Django ToDo Application
 
-The Library Management System is a Django-based web application designed for managing books, borrowers, and borrowing activities in a library.
+This is a simple ToDo application built using Django, a high-level Python web framework. The application allows users to manage their tasks, mark tasks as completed, edit tasks, and delete tasks. Users can sign up for an account, log in, and log out. The project follows the Model-View-Controller (MVC) architectural pattern provided by Django.
 
 ## Features
 
-- **Books Management:** Add, update, and delete books, including details such as title, author, ISBN, publication date, and availability status.
-- **Borrowers Management:** Create, update, and delete borrower profiles, including basic information like name and phone number.
-- **Borrowing System:** Track borrowing activities, including borrow and return dates, for efficient library management.
-- **User Authentication:** Users can sign up, log in, and log out securely. Librarians are restricted from being borrowers.
-- **Permissions:** Define permissions for users, such as the ability to borrow or return books.
+- **User authentication:** Users can sign up for a new account and log in using their username and password.
+- **Task management:** Users can create, view, update, and delete tasks. Tasks include a title, description, completion status, and creation date.
+- **Task filtering:** Users can filter tasks based on a search query, sort tasks by different criteria, and toggle the completion status of tasks.
+- **User-friendly interface:** The application includes user-friendly forms, validation messages, and success messages for a better user experience.
+
+## Technologies Used
+
+- **Django:** The web framework used to build the application.
+- **Python:** The programming language used for backend development.
+- **HTML/CSS:** Frontend styling and structure.
+- **Bootstrap:** Frontend framework for responsive and clean UI.
+- **PostgreSQL:** The relational database used by Django for data storage.
+
 
 ## Installation
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/wdcs-pruthvithakor/library_management.git
-    cd library_management
+    git clone https://github.com/wdcs-pruthvithakor/todo.git
+    cd todo
     ```
 
 2. Create a virtual environment and install dependencies:
@@ -39,6 +47,8 @@ The Library Management System is a Django-based web application designed for man
     POSTGREDB_PORT='5432'
     ```
 
+    Update the values according to your PostgreSQL database configuration.
+
 4. Run migrations:
 
     ```bash
@@ -57,42 +67,26 @@ The Library Management System is a Django-based web application designed for man
     python manage.py runserver
     ```
 
-Visit [http://localhost:8000/](http://localhost:8000/) to access the application. Admin panel is available at [http://localhost:8000/admin/](http://localhost:8000/admin/).
+7. **Open your web browser and go to http://localhost:8000/ to access the application.**
 
-## Type of Users & Permissions
-
-1. **Superuser:** Has full access to the application.
-2. **User:** Can only view available books. ( Ask admin to add as librarian or borrower. )
-3. **Librarian:** Can view, edit, create, and delete books and borrowers. Can view pending borrowed books and borrowing history of all users.
-4. **Borrwers:** Can view, borrow, and return available books. Can view their borrowing history and pending borrowed books.
 
 ## Usage
 
-1. Log in using the created superuser account on [http://localhost:8000/admin/](http://localhost:8000/admin/).
-2. Make staff accounts for librarians.
-3. Log in on the [http://localhost:8000/](http://localhost:8000/) with the created user account.
-4. Add Borrowers and Books. You can check borrowing history and pending borrowed books of all borrowers.
-5. Log in using borrower account to borrow and return books.
-6. Borrower can check their borrowing history and pending borrowed books.
-7. If you Log in with user which is not borrower or librarian, you will be redirected to available book list page where you can only view details of books.
+1. **Create a new account:**
 
-## URLs
+   Click on the "Sign Up" link, provide the required information, and create a new account.
 
-- `/login/`: Log in to the system.
-- `/logout/`: Log out of the system.
-- `/signup/`: Sign up for a new user account.
-- `/borrowers/`: View the list of borrowers.
-- `/borrower/create/`: Create a new borrower profile.
-- `/books/`: View the list of books.
-- `/book/create/`: Create a new book entry.
-- `/available/`: View available books.
-- `/borrow/`: Borrow a book.
-- `/return/`: Return a borrowed book.
-- `/pending/`: View pending borrowings.
-- `/history/`: View borrowing history.
-- `/borrower/history/`: View borrower-specific borrowing history.
+2. **Log in:**
 
-Certainly! Here's an extended README.md section for testing your Django project:
+   Log in with your username and password.
+
+3. **Manage Tasks:**
+
+   Navigate to the "Tasks" section to manage your tasks. Create, edit, or delete tasks as needed.
+
+4. **Log out:**
+
+   Log out when you are done.
 
 ## Testing
 
@@ -107,34 +101,6 @@ python manage.py test
 ```
 
 This will discover and run all the tests in the `tests` directory.
-
-### Writing Tests
-
-Tests are organized in the `tests` directory. Django's test classes and methods are utilized to cover various aspects of the application, including models, views, forms, and functionalities.
-
-#### Example Test Structure
-
-```python
-# Example test file: tests/test_models.py
-
-from django.test import TestCase
-from .models import Book, Borrower, Borrowing
-
-class BookModelTest(TestCase):
-    def test_has_pending_returns(self):
-        # Test the has_pending_returns method for the Book model
-        # ...
-
-class BorrowerModelTest(TestCase):
-    def test_has_pending_returns(self):
-        # Test the has_pending_returns method for the Borrower model
-        # ...
-
-class BorrowingModelTest(TestCase):
-    def test_borrowing_dates(self):
-        # Test the borrow and return dates for the Borrowing model
-        # ...
-```
 
 ### Test Coverage
 
@@ -163,7 +129,3 @@ This will display a detailed report indicating the percentage of code coverage.
 ### Mocking and Fixtures
 
 Use Django's `TestCase` class to create fixtures and mock objects for testing. This ensures that tests are isolated and do not interfere with each other.
-
-### Continuous Integration (CI)
-
-Check Continous Integration pipeline of this project. This ensures that tests are automatically run whenever changes are pushed to the repository, helping to catch and address issues early in the development process.
